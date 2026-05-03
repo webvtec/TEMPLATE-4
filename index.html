@@ -3,31 +3,31 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
-<title>TROY THE BARBER – Book Your Cut Today</title>
+<title>TRAVIS THE BARBER – Book Your Cut Today</title>
 <meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="description" content="TROY THE BARBER – Professional barber offering precision fades, skin fades, beard work, kids cuts and special designs. Book your appointment today.">
-<meta name="keywords" content="TROY THE BARBER, Troy barber, TROY THE BARBER Jamaica, Troy barber Savanna la Mar, Troy barber Jamaica, best barber Savanna la Mar Jamaica, barber shop Savanna la Mar, barber near me Savanna la Mar, men haircut Jamaica, fade haircut Jamaica, skin fade Savanna la Mar, taper fade Jamaica, bald fade Jamaica, lineup Jamaica, shape up Savanna la Mar, edge up Jamaica, beard trim Jamaica, beard grooming Savanna la Mar, kids haircut Jamaica, boys fade Savanna la Mar, book barber Jamaica, barber appointment Savanna la Mar, hair design Jamaica, waves haircut Jamaica, barber Great George Street, barber Savanna la Mar, Westmoreland barber, walk in barber Jamaica, troythebarber">
-<meta name="author" content="TROY THE BARBER">
+<meta name="description" content="TRAVIS THE BARBER – Professional barber offering precision fades, skin fades, beard work, kids cuts and special designs. Book your appointment today.">
+<meta name="keywords" content="TRAVIS THE BARBER, Troy barber, TRAVIS THE BARBER Jamaica, Troy barber Savanna la Mar, Troy barber Jamaica, best barber Savanna la Mar Jamaica, barber shop Savanna la Mar, barber near me Savanna la Mar, men haircut Jamaica, fade haircut Jamaica, skin fade Savanna la Mar, taper fade Jamaica, bald fade Jamaica, lineup Jamaica, shape up Savanna la Mar, edge up Jamaica, beard trim Jamaica, beard grooming Savanna la Mar, kids haircut Jamaica, boys fade Savanna la Mar, book barber Jamaica, barber appointment Savanna la Mar, hair design Jamaica, waves haircut Jamaica, barber Great George Street, barber Savanna la Mar, Westmoreland barber, walk in barber Jamaica, troythebarber">
+<meta name="author" content="TRAVIS THE BARBER">
 <link rel="canonical" href="https://barbernicocuts.com/">
 <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/dqqrcs/image/uploa1776742701/BARBER_NICO_LOGO_lzof5m.png">
 <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/dqqr9ucs/image/upload/v1762701/BARBER_NICO_LOGO_lzof5m.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://barbernicocuts.com">
-<meta property="og:title" content="TROY THE BARBER – Book Your Cut Today">
-<meta property="og:description" content="TROY THE BARBER – Precision fades, skin fades, beard work, kids cuts and special designs. Book your appointment online now.">
+<meta property="og:title" content="TRAVIS THE BARBER – Book Your Cut Today">
+<meta property="og:description" content="TRAVIS THE BARBER – Precision fades, skin fades, beard work, kids cuts and special designs. Book your appointment online now.">
 <meta property="og:image" content="https://res.cloudinarym/dqqr9udcs/image/upload/142701/BARBER_COLOGO_lzof5m.png">
-<meta property="og:site_name" content="TROY THE BARBER">
+<meta property="og:site_name" content="TRAVIS THE BARBER">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://barbernicocuts.com">
-<meta name="twitter:title" content="TROY THE BARBER – Book Your Cut Today">
-<meta name="twitter:description" content="TROY THE BARBER – Precision fades, skin fades, beard work, kids cuts and special designs. Book your appointment online now.">
+<meta name="twitter:title" content="TRAVIS THE BARBER – Book Your Cut Today">
+<meta name="twitter:description" content="TRAVIS THE BARBER – Precision fades, skin fades, beard work, kids cuts and special designs. Book your appointment online now.">
 <meta name="referrer" content="no-referrer-when-downgrade">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "HairSalon",
-  "name": "TROY THE BARBER",
+  "name": "TRAVIS THE BARBER",
   "url": "https://barbernicocuts.com",
   "description": "Professional barber offering precision fades, skin fades, beard work, kids cuts and special designs in Jamaica.",
   "priceRange": "$$",
@@ -56,7 +56,7 @@
 
 <style>
 /* =====================================================
-   TROY THE BARBER — NEON STREET BARBERSHOP REDESIGN
+   TRAVIS THE BARBER — NEON STREET BARBERSHOP REDESIGN
    Palette: Midnight black · Electric cyan · Neon red · Hot gold
    ===================================================== */
 :root {
@@ -286,7 +286,7 @@ body::after {
   align-items: flex-start;
   justify-content: flex-start;
   padding-top: 62px;
-  padding-left: 58px;
+  padding-left: 0;
 }
 .profile-modal-overlay.show { display: flex; }
 
@@ -387,21 +387,7 @@ body::after {
 /* ========================= BOTTOM NAV ========================= */
 /* ========================= VERTICAL LEFT NAV ========================= */
 .bottom-nav {
-  position: fixed;
-  left: 0;
-  top: 62px;                          /* flush under the header */
-  bottom: 0;
-  width: 58px;
-  background: rgba(10, 10, 20, 0.97);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-right: 1px solid rgba(255,255,255,0.06);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;         /* stack from top */
-  align-items: stretch;
-  z-index: 900;                        /* below drawer (999) but above content */
-  padding-top: 8px;
+  display: none; /* replaced by hamburger sidebar */
 }
 
 /* Subtle neon line on right edge of nav */
@@ -499,7 +485,7 @@ body::after {
 .content-section {
   display: none;
   padding-top: 62px;
-  padding-left: 58px;                  /* offset for left nav */
+  padding-left: 0;                  /* no left nav - using hamburger */
   min-height: calc(100vh - 62px);
   position: relative;
   z-index: 1;
@@ -1001,14 +987,249 @@ form button {
   to   { opacity: 1; transform: translateY(0); }
 }
 
+
+/* ========================= HAMBURGER + SIDEBAR ========================= */
+.hamburger-btn {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+.hamburger-btn:hover {
+  border-color: var(--neon);
+  background: rgba(0,212,255,0.08);
+}
+.hamburger-btn span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+.hamburger-btn.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger-btn.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger-btn.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Sidebar overlay scrim */
+.sidebar-scrim {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 1998;
+}
+.sidebar-scrim.show { display: block; }
+
+/* Sidebar panel */
+.sidebar-panel {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 280px;
+  max-width: 85vw;
+  background: rgba(10, 10, 22, 0.98);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-right: 1px solid rgba(0,212,255,0.15);
+  z-index: 1999;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform 0.32s cubic-bezier(0.4,0,0.2,1);
+  padding-top: 0;
+  box-shadow: 8px 0 40px rgba(0,0,0,0.6);
+}
+.sidebar-panel::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, transparent 0%, var(--neon) 30%, var(--hot) 70%, transparent 100%);
+  opacity: 0.3;
+}
+.sidebar-panel.open { transform: translateX(0); }
+
+/* Sidebar header with logo */
+.sidebar-header {
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 70px;
+}
+.sidebar-logo {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+}
+.sidebar-close {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-dim);
+  font-size: 14px;
+  transition: all 0.2s;
+}
+.sidebar-close:hover { border-color: var(--hot); color: var(--hot); }
+
+/* Sidebar nav items */
+.sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 0;
+}
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 14px 20px;
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.18s ease;
+  position: relative;
+  text-align: left;
+}
+.sidebar-nav-item .sn-icon { font-size: 20px; width: 24px; text-align: center; flex-shrink: 0; }
+.sidebar-nav-item:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+.sidebar-nav-item.active {
+  color: var(--neon);
+  background: rgba(0,212,255,0.07);
+}
+.sidebar-nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 20%; bottom: 20%;
+  width: 3px;
+  background: var(--neon);
+  border-radius: 0 3px 3px 0;
+  box-shadow: 0 0 10px var(--neon);
+}
+.sidebar-nav-item.profile-item { border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 4px; }
+.sidebar-nav-item.profile-item .sn-icon {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--hot), var(--neon));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  border: 1.5px solid rgba(0,212,255,0.25);
+  overflow: hidden;
+}
+.sidebar-nav-item.profile-item .sn-icon img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+
+/* Sidebar divider */
+.sidebar-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.05);
+  margin: 8px 16px;
+}
+.sidebar-section-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  padding: 8px 20px 4px;
+  opacity: 0.6;
+}
+
+/* Sidebar social / location footer */
+.sidebar-footer {
+  padding: 16px 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.sidebar-social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-dim);
+  transition: all 0.2s ease;
+}
+.sidebar-social-btn.loc { color: var(--amber); border-color: rgba(255,210,63,0.25); }
+.sidebar-social-btn.loc:hover { background: rgba(255,210,63,0.1); border-color: var(--amber); }
+.sidebar-social-btn.ig:hover { border-color: var(--neon); background: rgba(0,212,255,0.08); }
+.sidebar-social-btn.tt:hover { border-color: var(--hot); background: rgba(255,32,82,0.08); }
+.sidebar-website {
+  flex: 1;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--text-dim);
+  text-decoration: none;
+  text-align: right;
+  transition: color 0.2s;
+}
+.sidebar-website:hover { color: var(--neon); }
+.sidebar-location-label {
+  width: 100%;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  color: var(--text-dim);
+  text-align: center;
+  padding: 8px 0 0;
+}
+
 </style>
 </head>
 <body>
 
 <!-- Header -->
 <div class="header-bar">
+  <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleSidebar()" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
   <div class="header-title">
-    <span>TROY <span class="brand-hot">THE</span> BARBER</span>
+    <img src="https://res.cloudinary.com/dqqr9udcs/image/upload/v1777851528/TRAVIS_THE_BARBER_LOGO_y1lgfv.jpg" alt="Travis The Barber" style="height:44px; width:auto; object-fit:contain;">
   </div>
 </div>
 
@@ -1035,6 +1256,80 @@ form button {
       <span class="btn-icon" id="profileAuthIcon">🔑</span>
       <span id="profileAuthLabel">Log In</span>
     </button>
+  </div>
+</div>
+
+
+<!-- Sidebar Scrim -->
+<div class="sidebar-scrim" id="sidebarScrim" onclick="closeSidebar()"></div>
+
+<!-- Sidebar Panel -->
+<div class="sidebar-panel" id="sidebarPanel">
+
+
+  <div class="sidebar-nav">
+    <!-- Profile -->
+    <a class="sidebar-nav-item profile-item" id="snav-profile" onclick="toggleProfileModal(); closeSidebar();" href="javascript:void(0);">
+      <span class="sn-icon" id="sidebarProfileAvatar">👤</span>
+      <span>Profile</span>
+    </a>
+
+    <div class="sidebar-section-label">Navigate</div>
+
+    <a class="sidebar-nav-item active" id="snav-gallery" onclick="showSection('gallerySection'); closeSidebar();" href="javascript:void(0);">
+      <span class="sn-icon">✂</span>
+      <span>Cuts</span>
+    </a>
+    <a class="sidebar-nav-item" id="snav-booking" onclick="showSection('bookingSection'); closeSidebar();" href="javascript:void(0);">
+      <span class="sn-icon">📆</span>
+      <span>Book</span>
+    </a>
+    <a class="sidebar-nav-item" id="snav-prices" onclick="showSection('walkInPriceSection'); closeSidebar();" href="javascript:void(0);">
+      <span class="sn-icon">💰</span>
+      <span>Prices</span>
+    </a>
+    <a class="sidebar-nav-item" id="snav-reviews" onclick="showSection('reviewsSection'); closeSidebar();" href="javascript:void(0);">
+      <span class="sn-icon">★</span>
+      <span>Reviews</span>
+    </a>
+
+    <div class="sidebar-divider"></div>
+
+    <a class="sidebar-nav-item" href="https://maps.app.goo.gl/r51jL6Ba4yy1YrKM9" target="_blank" style="color:var(--amber);">
+      <span class="sn-icon">📍</span>
+      <span>Orange Bay, Negril, Jamaica</span>
+    </a>
+
+  </div>
+
+  <div class="sidebar-footer">
+    <!-- Location -->
+    <a class="sidebar-social-btn loc" href="https://maps.app.goo.gl/r51jL6Ba4yy1YrKM9" target="_blank" aria-label="Find us on Google Maps">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 24 28" fill="none">
+        <path d="M12 1 C6.5 1 2 5.5 2 11 C2 18.5 12 27 12 27 C12 27 22 18.5 22 11 C22 5.5 17.5 1 12 1 Z" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linejoin="round"/>
+        <circle cx="12" cy="11" r="3.2" stroke="currentColor" stroke-width="1.7" fill="none"/>
+      </svg>
+    </a>
+    <!-- Instagram -->
+    <a class="sidebar-social-btn ig" href="https://www.instagram.com/travisthebarber21" target="_blank" aria-label="Instagram">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
+        <defs>
+          <linearGradient id="ig-sb" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#00D4FF"/>
+            <stop offset="100%" style="stop-color:#FF2052"/>
+          </linearGradient>
+        </defs>
+        <path fill="url(#ig-sb)" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+    </a>
+    <!-- TikTok -->
+    <a class="sidebar-social-btn tt" href="https://www.tiktok.com/@travisthebarber21?_r=1&_t=ZS-95nC0o3qR5V" target="_blank" aria-label="TikTok">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 448 512">
+        <path fill="var(--hot)" d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25v178.72A162.55 162.55 0 1 1 185 188.31v89.89a74.62 74.62 0 1 0 52.23 71.18V0h88a121.18 121.18 0 0 0 1.86 22.17A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z"/>
+      </svg>
+    </a>
+    <!-- Website -->
+    <a class="sidebar-website" href="http://travisbarbershop.com" target="_blank">travisbarbershop.com</a>
   </div>
 </div>
 
@@ -1071,7 +1366,7 @@ form button {
   <div style="flex:1;"></div>
 
   <!-- Location -->
-  <a class="nav-social-icon loc" href="https://maps.app.goo.gl/FtxuMMdbxvF7jAV29" target="_blank" aria-label="Find us on Google Maps">
+  <a class="nav-social-icon loc" href="https://maps.app.goo.gl/r51jL6Ba4yy1YrKM9" target="_blank" aria-label="Find us on Google Maps">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 24 28" fill="none">
       <path d="M12 1 C6.5 1 2 5.5 2 11 C2 18.5 12 27 12 27 C12 27 22 18.5 22 11 C22 5.5 17.5 1 12 1 Z"
             stroke="currentColor" stroke-width="1.7" fill="none" stroke-linejoin="round"/>
@@ -1080,7 +1375,7 @@ form button {
   </a>
 
   <!-- Instagram -->
-  <a class="nav-social-icon" href="https://www.instagram.com/troythebarber" target="_blank" aria-label="Instagram">
+  <a class="nav-social-icon" href="https://www.instagram.com/travisthebarber21" target="_blank" aria-label="Instagram">
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
       <defs>
         <linearGradient id="ig-nav" x1="0%" y1="100%" x2="100%" y2="0%">
@@ -1093,7 +1388,7 @@ form button {
   </a>
 
   <!-- TikTok -->
-  <a class="nav-social-icon" href="https://www.tiktok.com" target="_blank" aria-label="TikTok">
+  <a class="nav-social-icon" href="https://www.tiktok.com/@travisthebarber21?_r=1&_t=ZS-95nC0o3qR5V" target="_blank" aria-label="TikTok">
     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 448 512">
       <path fill="var(--hot)" d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25v178.72A162.55 162.55 0 1 1 185 188.31v89.89a74.62 74.62 0 1 0 52.23 71.18V0h88a121.18 121.18 0 0 0 1.86 22.17A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z"/>
     </svg>
@@ -1320,91 +1615,132 @@ form button {
     Walk-ins welcome any day &nbsp;·&nbsp; Mon–Sat 12PM–9PM &nbsp;·&nbsp; Sun 1PM–8PM
   </div>
 
-
   <div style="max-width:440px; margin:0 auto; padding:0 16px 80px;">
+
+    <!-- PACKAGES -->
+    <div style="background:var(--surface2); border-radius:6px; overflow:hidden; margin-bottom:14px; border:1px solid rgba(255,210,63,0.4);">
+      <div style="background:linear-gradient(90deg,#1a1200,#2a1f00); padding:10px 16px; border-bottom:1px solid rgba(255,210,63,0.3);">
+        <span style="font-family:'Barlow Condensed',sans-serif; font-weight:900; letter-spacing:2px; font-size:14px; color:var(--amber);">✦ PACKAGES</span>
+      </div>
+      <div style="padding:12px 16px;">
+
+        <!-- ELITE+ -->
+        <div style="background:rgba(255,210,63,0.06); border:1px solid rgba(255,210,63,0.25); border-radius:6px; padding:14px; margin-bottom:12px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:16px;letter-spacing:2px;color:var(--amber);">💎 ELITE+</span>
+            <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:var(--amber);">$2,000</span>
+          </div>
+          <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin-bottom:8px;">Package Includes</div>
+          <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="font-size:13px;color:#f0f0f0;">Trim n Beard Line Up</span><span style="font-size:12px;color:#4ade80;font-weight:700;">✓ INCLUDED</span></div>
+          <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="font-size:13px;color:#f0f0f0;">Hot Towel</span><span style="font-size:12px;color:#4ade80;font-weight:700;">✓ INCLUDED</span></div>
+          <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="font-size:13px;color:#f0f0f0;">Beard Oil</span><span style="font-size:12px;color:#4ade80;font-weight:700;">✓ INCLUDED</span></div>
+          <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="font-size:13px;color:#f0f0f0;">Eyebrow</span><span style="font-size:12px;color:#4ade80;font-weight:700;">✓ INCLUDED</span></div>
+          <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="font-size:13px;color:#f0f0f0;">Hair Products</span><span style="font-size:12px;color:#4ade80;font-weight:700;">✓ INCLUDED</span></div>
+          <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--hot);margin:10px 0 6px;">Optional Extras</div>
+          <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="font-size:13px;color:#f0f0f0;">Colour Beard Only</span><span style="font-size:13px;color:var(--accent);font-weight:700;">$800</span></div>
+          <div style="display:flex;justify-content:space-between;padding:5px 0;"><span style="font-size:13px;color:#f0f0f0;">Colour Hair Only</span><span style="font-size:13px;color:var(--accent);font-weight:700;">$800</span></div>
+        </div>
+
+        <!-- ELITE -->
+        <div style="background:rgba(255,210,63,0.04); border:1px solid rgba(255,210,63,0.18); border-radius:6px; padding:14px; margin-bottom:12px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:16px;letter-spacing:2px;color:var(--amber);">🥇 ELITE</span>
+            <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:var(--amber);">$1,700</span>
+          </div>
+          <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin-bottom:8px;">Package Includes</div>
+          <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="font-size:13px;color:#f0f0f0;">Trim n Beard Line Up</span><span style="font-size:12px;color:#4ade80;font-weight:700;">✓ INCLUDED</span></div>
+          <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="font-size:13px;color:#f0f0f0;">Beard Oil</span><span style="font-size:12px;color:#4ade80;font-weight:700;">✓ INCLUDED</span></div>
+          <div style="display:flex;justify-content:space-between;padding:5px 0;"><span style="font-size:13px;color:#f0f0f0;">Hair Products</span><span style="font-size:12px;color:#4ade80;font-weight:700;">✓ INCLUDED</span></div>
+        </div>
+
+        <!-- STANDARD -->
+        <div style="background:rgba(0,212,255,0.04); border:1px solid rgba(0,212,255,0.18); border-radius:6px; padding:14px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+            <span style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:16px;letter-spacing:2px;color:var(--neon);">🥈 STANDARD</span>
+            <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:var(--neon);">$1,500</span>
+          </div>
+          <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-dim);margin-bottom:8px;">Package Includes</div>
+          <div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);"><span style="font-size:13px;color:#f0f0f0;">Trim n Beard Line Up</span><span style="font-size:12px;color:#4ade80;font-weight:700;">✓ INCLUDED</span></div>
+          <div style="display:flex;justify-content:space-between;padding:5px 0;"><span style="font-size:13px;color:#f0f0f0;">Beard Oil</span><span style="font-size:12px;color:#4ade80;font-weight:700;">✓ INCLUDED</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- INDIVIDUAL SERVICES HEADER -->
+    <div style="text-align:center;margin:20px 0 14px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:13px;letter-spacing:4px;color:var(--text-dim);text-transform:uppercase;">— INDIVIDUAL SERVICES —</div>
 
     <!-- ADULTS -->
     <div style="background:var(--surface2); border-radius:6px; overflow:hidden; margin-bottom:14px; border:1px solid rgba(255,32,82,0.2);">
       <div style="background:var(--hot); padding:10px 16px;">
-        <span style="font-family:'Barlow Condensed',sans-serif; font-weight:900; letter-spacing:2px; font-size:14px; color:#fff;">💈 ADULTS 18+ — WALK-IN &amp; APPOINTMENT</span>
+        <span style="font-family:'Barlow Condensed',sans-serif; font-weight:900; letter-spacing:2px; font-size:14px; color:#fff;">👨 ADULTS</span>
       </div>
       <div style="padding:12px 16px;">
-        <div style="margin-bottom:6px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--accent);">Haircuts</div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">All Round Fade</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,500</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Taper Fade</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,500</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">One Level</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,500</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Bald Cut</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,500</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Mohawk</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,500</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Flat Top</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,500</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Big Chop</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,500</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Buzz Cut</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,500</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Low Fade</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,500</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Skin Fade</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,500</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Ladies Cut</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,500</span></div>
-        <div style="margin-top:12px;margin-bottom:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);">Grooming</div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Line Up &amp; Shave</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,500</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Eyebrows Shave</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,000</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Eyebrow Wax</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,500</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Tint Eyebrows</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,000</span></div>
-        <div style="margin-top:12px;margin-bottom:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);">Lashes</div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Singles Eye Lash</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$3,500</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Clusters</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$4,500</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Strip</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,500</span></div>
-        <div style="margin-top:12px;margin-bottom:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);">Optional Extra</div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;"><span style="font-size:14px;color:#f0f0f0;">Custom Design</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$500+</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Trim n Beard Line Up</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,500</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Trim</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,200</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Shave Only</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$800</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Scissors Kut</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,000+</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Line Up Only</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$800</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Line Up and Shave</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,000</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Hot Towel Only</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$500</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Trim &amp; Shave + Hot Towel &amp; Beard Oil</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,000</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Trim &amp; Shave + Spray Tint Hair Line &amp; Hot Towel</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,500</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Eyebrow Tinting</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,200</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Eyebrow</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$500</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Ladies Kut</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,200+</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Ladies Scissors Kut</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,000+</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Designs</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$800+</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Spray Tint Hair Line</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$500</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Color Hair Only</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$800</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Color Beard Only</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$800</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;"><span style="font-size:14px;color:#f0f0f0;">Color Hair and Beard</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,500</span></div>
       </div>
     </div>
 
     <!-- TEENS -->
     <div style="background:var(--surface2); border-radius:6px; overflow:hidden; margin-bottom:14px; border:1px solid rgba(255,32,82,0.2);">
       <div style="background:var(--hot); padding:10px 16px;">
-        <span style="font-family:'Barlow Condensed',sans-serif; font-weight:900; letter-spacing:2px; font-size:14px; color:#fff;">✂ TEENS 13–17 — WALK-IN PRICE LIST</span>
+        <span style="font-family:'Barlow Condensed',sans-serif; font-weight:900; letter-spacing:2px; font-size:14px; color:#fff;">🧑 TEENS</span>
       </div>
       <div style="padding:12px 16px;">
-        <div style="margin-bottom:6px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--accent);">Haircuts</div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">All Round Fade</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,000</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Taper Fade</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,000</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">One Level</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,000</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Bald Cut</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,000</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Mohawk</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,000</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Flat Top</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,000</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Big Chop</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,000</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Buzz Cut</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,000</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Low Fade</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,000</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Skin Fade</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,000</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Ladies Cut</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,000</span></div>
-        <div style="margin-top:12px;margin-bottom:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);">Grooming</div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Eyebrows Shave</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,000</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Eyebrow Wax</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,500</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Tint Eyebrows</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,000</span></div>
-        <div style="margin-top:12px;margin-bottom:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);">Lashes</div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Singles Eye Lash</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$3,500</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Clusters</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$4,500</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Strip</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,500</span></div>
-        <div style="margin-top:12px;margin-bottom:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);">Optional Extra</div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;"><span style="font-size:14px;color:#f0f0f0;">Custom Design</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$500+</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Trim n Beard Line Up</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,200</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Trim</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,000</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Shave Only</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$700</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Scissors Kut</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,000+</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Line Up Only</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$700</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Line Up and Shave</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,000</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Hot Towel Only</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$500</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Eyebrow</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$500</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Eyebrow Tinting</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,200</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Designs</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$800+</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Spray Tint Hair Line</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$500</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Ladies Kut</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,200+</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Ladies Scissors Kut</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,000+</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Color Hair Only</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$800</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Color Beard Only</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$800</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;"><span style="font-size:14px;color:#f0f0f0;">Color Hair and Beard</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,500</span></div>
       </div>
     </div>
 
     <!-- KIDS -->
     <div style="background:var(--surface2); border-radius:6px; overflow:hidden; margin-bottom:16px; border:1px solid rgba(255,32,82,0.2);">
       <div style="background:var(--hot); padding:10px 16px;">
-        <span style="font-family:'Barlow Condensed',sans-serif; font-weight:900; letter-spacing:2px; font-size:14px; color:#fff;">👦 KIDS — WALK-IN &amp; APPOINTMENT</span>
+        <span style="font-family:'Barlow Condensed',sans-serif; font-weight:900; letter-spacing:2px; font-size:14px; color:#fff;">🧒 KIDS</span>
       </div>
       <div style="padding:12px 16px;">
-        <div style="margin-bottom:6px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--accent);">Haircuts</div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">All Round Fade</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,500</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Taper Fade</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,500</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">One Level</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,500</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Bald Cut</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,500</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Mohawk</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,500</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Flat Top</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,500</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Big Chop</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,500</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Buzz Cut</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,500</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">School Boy Trim</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,500</span></div>
-        <div style="margin-top:12px;margin-bottom:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent);">Optional Extra</div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Line Up</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$500+</span></div>
-        <div style="display:flex;justify-content:space-between;padding:8px 0;"><span style="font-size:14px;color:#f0f0f0;">Custom Design</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$500+</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Boyz Kut</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$1,000</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);"><span style="font-size:14px;color:#f0f0f0;">Scissors Kut</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$2,000+</span></div>
+        <div style="display:flex;justify-content:space-between;padding:8px 0;"><span style="font-size:14px;color:#f0f0f0;">Designs</span><span style="font-size:14px;color:var(--accent);font-weight:700;white-space:nowrap;margin-left:12px;">$800+</span></div>
+      </div>
+    </div>
+
+    <!-- Walk-in slots -->
+    <div style="background:var(--surface2); border-radius:6px; overflow:hidden; margin-bottom:14px; border:1px solid var(--border-neon);">
+      <div style="background:rgba(0,212,255,0.08); padding:10px 16px; border-bottom:1px solid rgba(0,212,255,0.15);">
+        <span style="font-family:'Barlow Condensed',sans-serif; font-weight:900; letter-spacing:2px; font-size:14px; color:var(--neon);">⏰ TODAY'S WALK-IN SLOTS</span>
+      </div>
+      <div style="padding:12px 16px;">
+        <div id="walkInSlotsDisplay" style="display:flex; flex-wrap:wrap; gap:6px;"></div>
       </div>
     </div>
 
@@ -1460,7 +1796,7 @@ const firebaseConfig = {
   });
 
   // ========== AUTH ==========
-  const ADMIN_UID = "Vj3a2XPtWTamBVFi86OP1oZJMi63";
+  const ADMIN_UID = "Tms2VoEM3RUgsLmCPS6ROM8xobe2";
 
   function login() {
     document.getElementById('adminLoginModal').style.display = 'flex';
@@ -2666,6 +3002,63 @@ const firebaseConfig = {
     }
   });
 
+
+  // ========== HAMBURGER SIDEBAR ==========
+  function toggleSidebar() {
+    const panel = document.getElementById('sidebarPanel');
+    const scrim = document.getElementById('sidebarScrim');
+    const btn = document.getElementById('hamburgerBtn');
+    const isOpen = panel.classList.contains('open');
+    if (isOpen) {
+      closeSidebar();
+    } else {
+      panel.classList.add('open');
+      scrim.classList.add('show');
+      btn.classList.add('open');
+    }
+  }
+
+  function closeSidebar() {
+    const panel = document.getElementById('sidebarPanel');
+    const scrim = document.getElementById('sidebarScrim');
+    const btn = document.getElementById('hamburgerBtn');
+    panel.classList.remove('open');
+    scrim.classList.remove('show');
+    btn.classList.remove('open');
+  }
+
+  // Sync sidebar nav active state with main showSection
+  const _origShowSectionBase = typeof _origShowSection !== 'undefined' ? _origShowSection : showSection;
+  const _sidebarSectionMap = {
+    'gallerySection': 'snav-gallery',
+    'bookingSection': 'snav-booking',
+    'walkInPriceSection': 'snav-prices',
+    'reviewsSection': 'snav-reviews'
+  };
+  function updateSidebarActive(sectionId) {
+    document.querySelectorAll('.sidebar-nav-item').forEach(el => el.classList.remove('active'));
+    const target = document.getElementById(_sidebarSectionMap[sectionId]);
+    if (target) target.classList.add('active');
+  }
+  // Patch showSection to also update sidebar
+  const __origShowSection = showSection;
+  showSection = function(sectionId) {
+    __origShowSection(sectionId);
+    updateSidebarActive(sectionId);
+    if (sectionId === 'walkInPriceSection') renderWalkInSlots();
+  };
+
+  // Sync profile avatar in sidebar
+  firebase.auth().onAuthStateChanged(function(user) {
+    const sidebarAvatar = document.getElementById('sidebarProfileAvatar');
+    if (!sidebarAvatar) return;
+    if (user && user.photoURL) {
+      sidebarAvatar.innerHTML = '<img src="' + user.photoURL + '" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" />';
+    } else {
+      sidebarAvatar.textContent = '👤';
+    }
+  });
+
 </script>
 <!-- Unregister any service workers that block Firebase Storage images -->
 <script>
@@ -2676,6 +3069,6 @@ const firebaseConfig = {
   }
 </script>
 <!-- Footer Banner -->
-<div style="position:fixed;bottom:0;left:58px;right:0;background-color:#0A0A14;border-top:1px solid rgba(0,212,255,0.15);text-align:center;padding:5px 20px;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:2px;color:var(--text-dim);z-index:1000;"><a href="https://www.webvtec.com" target="_blank" style="color:var(--text-dim);text-decoration:underline;display:block;width:100%;" onmouseover="this.style.color='var(--neon)'" onmouseout="this.style.color='var(--text-dim)'">CLICK TO REQUEST YOUR OWN WEBSITE. <span style="color:var(--neon);">webvtec.com</span></a></div>
+<div style="position:fixed;bottom:0;left:0;right:0;background-color:#0A0A14;border-top:1px solid rgba(0,212,255,0.15);text-align:center;padding:5px 20px;font-family:'Barlow Condensed',sans-serif;font-size:12px;letter-spacing:2px;color:var(--text-dim);z-index:1000;"><a href="https://www.webvtec.com" target="_blank" style="color:var(--text-dim);text-decoration:underline;display:block;width:100%;" onmouseover="this.style.color='var(--neon)'" onmouseout="this.style.color='var(--text-dim)'">CLICK TO REQUEST YOUR OWN WEBSITE. <span style="color:var(--neon);">webvtec.com</span></a></div>
 </body>
 </html>
