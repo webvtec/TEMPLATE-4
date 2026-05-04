@@ -895,14 +895,6 @@ form button {
   padding: 12px 16px;
 }
 
-/* Walk-in slots */
-#walkInSlotsDisplay {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  padding: 10px 0;
-}
-
 /* ========================= REVIEWS ========================= */
 .reviews-prompt-box {
   max-width: 500px;
@@ -959,14 +951,6 @@ form button {
   line-height: 1.6;
   padding: 0 20px;
   letter-spacing: 0.3px;
-}
-
-/* Walk-in slots styling update */
-#walkInSlotsDisplay span {
-  background: var(--surface2) !important;
-  border: 1px solid rgba(255, 32, 82, 0.3) !important;
-  border-radius: 4px !important;
-  color: var(--hot) !important;
 }
 
 /* Responsive */
@@ -1258,6 +1242,27 @@ form button {
 .sidebar-util-payment.active::before,
 .sidebar-util-admin.active::before { display: none; }
 
+/* ---- Home Call sidebar button ---- */
+.sidebar-util-homecall {
+  color: #b8ff6e !important;
+  background: rgba(184,255,110,0.06);
+  border: 1px solid rgba(184,255,110,0.25);
+  border-radius: 8px;
+  margin: 4px 12px;
+  width: calc(100% - 24px);
+  padding: 12px 16px;
+  font-size: 13px;
+  box-shadow: inset 0 0 16px rgba(184,255,110,0.04);
+  transition: all 0.2s ease;
+}
+.sidebar-util-homecall:hover {
+  background: rgba(184,255,110,0.13) !important;
+  border-color: #b8ff6e !important;
+  box-shadow: 0 0 14px rgba(184,255,110,0.22), inset 0 0 16px rgba(184,255,110,0.06);
+  color: #fff !important;
+}
+.sidebar-util-homecall.active::before { display: none; }
+
 </style>
 </head>
 <body>
@@ -1339,6 +1344,11 @@ form button {
     <a class="sidebar-nav-item sidebar-util-admin" onclick="login(); closeSidebar();" href="javascript:void(0);">
       <span class="sn-icon">🔐</span>
       <span>Admin</span>
+    </a>
+
+    <a class="sidebar-nav-item sidebar-util-homecall" onclick="openHomeCallModal(); closeSidebar();" href="javascript:void(0);">
+      <span class="sn-icon">🏠</span>
+      <span>Request Home Call</span>
     </a>
 
     <div class="sidebar-divider"></div>
@@ -1782,16 +1792,132 @@ form button {
       </div>
     </div>
 
-    <!-- Walk-in slots -->
-    <div style="background:var(--surface2); border-radius:6px; overflow:hidden; margin-bottom:14px; border:1px solid var(--border-neon);">
-      <div style="background:rgba(0,212,255,0.08); padding:10px 16px; border-bottom:1px solid rgba(0,212,255,0.15);">
-        <span style="font-family:'Barlow Condensed',sans-serif; font-weight:900; letter-spacing:2px; font-size:14px; color:var(--neon);">⏰ TODAY'S WALK-IN SLOTS</span>
+
+
+  </div>
+</div>
+
+<!-- Home Call Modal -->
+<div id="homeCallModal" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background-color:rgba(0,0,0,0.8); justify-content:center; align-items:flex-start; z-index:10000; backdrop-filter:blur(8px); overflow-y:auto; padding:70px 0 40px;">
+  <div style="background:var(--surface); border:1px solid rgba(184,255,110,0.2); border-radius:10px; max-width:440px; width:92%; margin:0 auto; position:relative; box-shadow:0 30px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(184,255,110,0.1);">
+    <!-- Top colour bar -->
+    <div style="height:3px; background:linear-gradient(90deg,#b8ff6e,#00D4FF,#FFD23F); border-radius:10px 10px 0 0;"></div>
+    <!-- Close -->
+    <button onclick="closeHomeCallModal()" style="position:absolute; top:14px; right:14px; background:transparent; border:1px solid rgba(255,255,255,0.1); width:32px; height:32px; border-radius:50%; font-size:14px; cursor:pointer; color:var(--text-dim); display:flex; align-items:center; justify-content:center; transition:all 0.2s;" onmouseover="this.style.borderColor='#b8ff6e';this.style.color='#b8ff6e'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)';this.style.color='var(--text-dim)'">✕</button>
+
+    <div style="padding:28px 24px 28px;">
+      <!-- Header -->
+      <div style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:11px; color:#b8ff6e; letter-spacing:4px; text-transform:uppercase; margin-bottom:6px;">House Call</div>
+      <h3 style="margin:0 0 6px; color:var(--text); font-family:'Syne',sans-serif; font-weight:800; font-size:24px;">Request Home Call</h3>
+      <p style="font-size:13px; color:var(--text-dim); margin:0 0 6px; line-height:1.5;">Get a fresh cut at your door. Fill out the form and we'll send you a quote.</p>
+
+      <!-- ⚠️ Pricing notice -->
+      <div style="background:rgba(255,210,63,0.08); border:1px solid rgba(255,210,63,0.3); border-radius:6px; padding:12px 14px; margin-bottom:20px;">
+        <div style="display:flex; align-items:flex-start; gap:10px;">
+          <span style="font-size:18px; flex-shrink:0;">🏠</span>
+          <div>
+            <div style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:12px; color:var(--amber); letter-spacing:2px; text-transform:uppercase; margin-bottom:4px;">House Call Pricing</div>
+            <p style="font-size:12px; color:var(--text-dim); margin:0; line-height:1.6;">House calls <strong style="color:var(--amber);">start from $5,000</strong> travel fee <em>added on top</em> of the regular haircut price. Final quote depends on your location.</p>
+          </div>
+        </div>
       </div>
-      <div style="padding:12px 16px;">
-        <div id="walkInSlotsDisplay" style="display:flex; flex-wrap:wrap; gap:6px;"></div>
+
+      <!-- Form -->
+      <div id="homeCallFormWrap">
+        <div style="margin-bottom:14px;">
+          <label style="display:block; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:11px; letter-spacing:2px; color:var(--text-dim); text-transform:uppercase; margin-bottom:6px;">Full Name *</label>
+          <input id="hc_name" type="text" placeholder="Your full name" style="width:100%; padding:11px 14px; background:var(--surface2); border:1px solid var(--border); border-radius:6px; color:var(--text); font-family:'DM Sans',sans-serif; font-size:14px; outline:none; transition:border 0.2s;" onfocus="this.style.borderColor='#b8ff6e'" onblur="this.style.borderColor='var(--border)'"/>
+        </div>
+
+        <div style="margin-bottom:14px;">
+          <label style="display:block; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:11px; letter-spacing:2px; color:var(--text-dim); text-transform:uppercase; margin-bottom:6px;">Phone Number *</label>
+          <input id="hc_phone" type="tel" inputmode="numeric" maxlength="14" placeholder="(876) 123-4567" style="width:100%; padding:11px 14px; background:var(--surface2); border:1px solid var(--border); border-radius:6px; color:var(--text); font-family:'DM Sans',sans-serif; font-size:14px; outline:none; transition:border 0.2s;" onfocus="this.style.borderColor='#b8ff6e'" onblur="this.style.borderColor='var(--border)'"/>
+        </div>
+
+        <div style="margin-bottom:14px;">
+          <label style="display:block; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:11px; letter-spacing:2px; color:var(--text-dim); text-transform:uppercase; margin-bottom:6px;">Preferred Date *</label>
+          <input id="hc_date" type="date" style="width:100%; padding:11px 14px; background:var(--surface2); border:1px solid var(--border); border-radius:6px; color:var(--text); font-family:'DM Sans',sans-serif; font-size:14px; outline:none; transition:border 0.2s;" onfocus="this.style.borderColor='#b8ff6e'" onblur="this.style.borderColor='var(--border)'"/>
+        </div>
+
+        <div style="margin-bottom:14px;">
+          <label style="display:block; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:11px; letter-spacing:2px; color:var(--text-dim); text-transform:uppercase; margin-bottom:6px;">Haircut *</label>
+          <select id="hc_ageGroup" onchange="hcOnAgeGroupChange()" style="width:100%; padding:11px 14px; background:var(--surface2); border:1px solid var(--border); border-radius:6px; color:var(--text); font-family:'DM Sans',sans-serif; font-size:14px; outline:none; transition:border 0.2s; -webkit-appearance:none;" onfocus="this.style.borderColor='#b8ff6e'" onblur="this.style.borderColor='var(--border)'">
+            <option value="NONE">— Select age group —</option>
+            <option value="adult">ADULT 18+</option>
+            <option value="teen">TEENAGER 13–17</option>
+            <option value="kids">KIDS 3–12</option>
+          </select>
+        </div>
+
+        <div id="hc_adultWrap" style="display:none; margin-bottom:14px;">
+          <label style="display:block; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:11px; letter-spacing:2px; color:var(--text-dim); text-transform:uppercase; margin-bottom:6px;">Adult Cut *</label>
+          <select id="hc_adultService" style="width:100%; padding:11px 14px; background:var(--surface2); border:1px solid var(--border); border-radius:6px; color:var(--text); font-family:'DM Sans',sans-serif; font-size:14px; outline:none; -webkit-appearance:none;">
+            <option value="NONE">— Choose your cut —</option>
+            <option value="All Round Fade — $2,500">All Round Fade — $2,500</option>
+            <option value="Taper Fade — $2,500">Taper Fade — $2,500</option>
+            <option value="One Level — $2,500">One Level — $2,500</option>
+            <option value="Bald Cut — $2,500">Bald Cut — $2,500</option>
+            <option value="Mohawk — $2,500">Mohawk — $2,500</option>
+            <option value="Flat Top — $2,500">Flat Top — $2,500</option>
+            <option value="Big Chop — $2,500">Big Chop — $2,500</option>
+            <option value="Buzz Cut — $2,500">Buzz Cut — $2,500</option>
+            <option value="Low Fade — $2,500">Low Fade — $2,500</option>
+            <option value="Skin Fade — $2,500">Skin Fade — $2,500</option>
+            <option value="Ladies Cut — $2,500">Ladies Cut — $2,500</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div id="hc_teenWrap" style="display:none; margin-bottom:14px;">
+          <label style="display:block; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:11px; letter-spacing:2px; color:var(--text-dim); text-transform:uppercase; margin-bottom:6px;">Teen Cut *</label>
+          <select id="hc_teenService" style="width:100%; padding:11px 14px; background:var(--surface2); border:1px solid var(--border); border-radius:6px; color:var(--text); font-family:'DM Sans',sans-serif; font-size:14px; outline:none; -webkit-appearance:none;">
+            <option value="NONE">— Choose your cut —</option>
+            <option value="All Round Fade — $2,000">All Round Fade — $2,000</option>
+            <option value="Taper Fade — $2,000">Taper Fade — $2,000</option>
+            <option value="One Level — $2,000">One Level — $2,000</option>
+            <option value="Bald Cut — $2,000">Bald Cut — $2,000</option>
+            <option value="Mohawk — $2,000">Mohawk — $2,000</option>
+            <option value="Flat Top — $2,000">Flat Top — $2,000</option>
+            <option value="Big Chop — $2,000">Big Chop — $2,000</option>
+            <option value="Buzz Cut — $2,000">Buzz Cut — $2,000</option>
+            <option value="Low Fade — $2,000">Low Fade — $2,000</option>
+            <option value="Skin Fade — $2,000">Skin Fade — $2,000</option>
+            <option value="Ladies Cut — $2,000">Ladies Cut — $2,000</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div id="hc_kidsWrap" style="display:none; margin-bottom:14px;">
+          <label style="display:block; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:11px; letter-spacing:2px; color:var(--text-dim); text-transform:uppercase; margin-bottom:6px;">Kids Cut *</label>
+          <select id="hc_kidsService" style="width:100%; padding:11px 14px; background:var(--surface2); border:1px solid var(--border); border-radius:6px; color:var(--text); font-family:'DM Sans',sans-serif; font-size:14px; outline:none; -webkit-appearance:none;">
+            <option value="NONE">— Choose your cut —</option>
+            <option value="Boyz Kut — $1,000">Boyz Kut — $1,000</option>
+            <option value="Scissors Kut — $2,000+">Scissors Kut — $2,000+</option>
+            <option value="Designs — $800+">Designs — $800+</option>
+            <option value="All Round Fade — $1,500">All Round Fade — $1,500</option>
+            <option value="Taper Fade — $1,500">Taper Fade — $1,500</option>
+            <option value="Mohawk — $1,500">Mohawk — $1,500</option>
+            <option value="School Boy Trim — $1,500">School Boy Trim — $1,500</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom:14px;">
+          <label style="display:block; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:11px; letter-spacing:2px; color:var(--text-dim); text-transform:uppercase; margin-bottom:6px;">Your Location / Address *</label>
+          <input id="hc_location" type="text" placeholder="e.g. Orange Bay, Negril — house name or landmark" style="width:100%; padding:11px 14px; background:var(--surface2); border:1px solid var(--border); border-radius:6px; color:var(--text); font-family:'DM Sans',sans-serif; font-size:14px; outline:none; transition:border 0.2s;" onfocus="this.style.borderColor='#b8ff6e'" onblur="this.style.borderColor='var(--border)'"/>
+        </div>
+
+        <div style="margin-bottom:20px;">
+          <label style="display:block; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:11px; letter-spacing:2px; color:var(--text-dim); text-transform:uppercase; margin-bottom:6px;">Additional Notes</label>
+          <textarea id="hc_notes" rows="3" placeholder="Anything else we should know?" style="width:100%; padding:11px 14px; background:var(--surface2); border:1px solid var(--border); border-radius:6px; color:var(--text); font-family:'DM Sans',sans-serif; font-size:14px; outline:none; resize:vertical; transition:border 0.2s;" onfocus="this.style.borderColor='#b8ff6e'" onblur="this.style.borderColor='var(--border)'"></textarea>
+        </div>
+
+        <button onclick="submitHomeCallRequest()" id="hc_submitBtn" style="width:100%; padding:15px; background:linear-gradient(135deg,#b8ff6e,#7fd63a); color:#07070F; border:none; border-radius:8px; font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:15px; letter-spacing:3px; text-transform:uppercase; cursor:pointer; transition:all 0.2s; box-shadow:0 4px 20px rgba(184,255,110,0.25);" onmouseover="this.style.transform='translateY(-1px)';this.style.boxShadow='0 6px 28px rgba(184,255,110,0.4)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(184,255,110,0.25)'">
+          🏠 Request Quote
+        </button>
+        <p id="hc_msg" style="text-align:center; margin-top:12px; font-size:13px; display:none;"></p>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -2992,6 +3118,104 @@ const firebaseConfig = {
   function closePaymentInfo() {
     document.getElementById('paymentInfoModal').style.display = 'none';
   }
+
+  // ========== HOME CALL MODAL ==========
+  function openHomeCallModal() {
+    const modal = document.getElementById('homeCallModal');
+    modal.style.display = 'flex';
+    // set min date on date picker
+    const hcDate = document.getElementById('hc_date');
+    if (hcDate) hcDate.setAttribute('min', new Date().toISOString().split('T')[0]);
+  }
+
+  function closeHomeCallModal() {
+    document.getElementById('homeCallModal').style.display = 'none';
+  }
+
+  function hcOnAgeGroupChange() {
+    const group = document.getElementById('hc_ageGroup').value;
+    document.getElementById('hc_adultWrap').style.display = group === 'adult' ? 'block' : 'none';
+    document.getElementById('hc_teenWrap').style.display  = group === 'teen'  ? 'block' : 'none';
+    document.getElementById('hc_kidsWrap').style.display  = group === 'kids'  ? 'block' : 'none';
+  }
+
+  function submitHomeCallRequest() {
+    const name     = (document.getElementById('hc_name').value || '').trim();
+    const phone    = (document.getElementById('hc_phone').value || '').trim();
+    const date     = (document.getElementById('hc_date').value || '').trim();
+    const ageGroup = document.getElementById('hc_ageGroup').value;
+    const location = (document.getElementById('hc_location').value || '').trim();
+    const notes    = (document.getElementById('hc_notes').value || '').trim();
+    const msg      = document.getElementById('hc_msg');
+
+    // Determine selected service
+    let service = '';
+    if (ageGroup === 'adult')       service = document.getElementById('hc_adultService').value;
+    else if (ageGroup === 'teen')   service = document.getElementById('hc_teenService').value;
+    else if (ageGroup === 'kids')   service = document.getElementById('hc_kidsService').value;
+
+    // Validation
+    if (!name || !phone || !date || ageGroup === 'NONE' || !service || service === 'NONE' || !location) {
+      msg.style.display = 'block';
+      msg.style.color   = 'var(--hot)';
+      msg.textContent   = '⚠ Please fill in all required fields.';
+      return;
+    }
+
+    const btn = document.getElementById('hc_submitBtn');
+    btn.disabled    = true;
+    btn.textContent = 'Sending…';
+    msg.style.display = 'none';
+
+    const [y, m, d] = date.split('-');
+    const formattedDate = new Date(y, m - 1, d).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+    const refNum = 'HC-' + Date.now().toString().slice(-6);
+
+    // Save to Firestore
+    db.collection('homeCallRequests').add({
+      refNum, name, phone, date, service, location, notes,
+      status: 'Pending',
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    }).then(() => {
+      // Send to Telegram
+      const telegramBotToken = "8624976021:AAH66ZV65h7yF2TzWKzxi3uATSmq6ywWFS4";
+      const telegramChatId   = "-1003703378968";
+      const telegramMsg = `🏠 HOME CALL REQUEST\n\n🔢 Ref: ${refNum}\n👤 Name: ${name}\n📞 Phone: ${phone}\n📅 Date: ${formattedDate}\n💈 Service: ${service}\n📍 Location: ${location}${notes ? '\n📝 Notes: ' + notes : ''}\n\n⚠️ Travel fee: $5,000+ added to cut price`;
+      fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: telegramChatId, text: telegramMsg, parse_mode: 'HTML' })
+      }).catch(() => {});
+
+      // Show success
+      document.getElementById('hc_msg').style.display = 'none';
+      document.getElementById('homeCallFormWrap').innerHTML = `
+        <div style="text-align:center; padding:20px 0;">
+          <div style="width:60px; height:60px; border-radius:50%; border:2px solid #b8ff6e; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; font-size:26px;">🏠</div>
+          <div style="font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:11px; color:#b8ff6e; letter-spacing:4px; text-transform:uppercase; margin-bottom:8px;">Request Sent</div>
+          <h3 style="font-family:'Syne',sans-serif; font-weight:800; font-size:22px; color:var(--text); margin:0 0 10px;">Quote on its Way!</h3>
+          <p style="font-size:13px; color:var(--text-dim); line-height:1.6; margin:0 0 6px;">We'll reach out to confirm your quote shortly.</p>
+          <div style="background:var(--surface2); border:1px solid rgba(184,255,110,0.2); border-radius:6px; padding:12px; margin:16px 0; font-size:13px; color:var(--text-dim);">
+            <strong style="color:#b8ff6e;">Ref #: ${refNum}</strong><br>
+            Remember: travel fee starts from <strong style="color:var(--amber);">$5,000</strong> on top of your cut.
+          </div>
+          <button onclick="closeHomeCallModal()" style="padding:12px 30px; background:linear-gradient(135deg,#b8ff6e,#7fd63a); color:#07070F; border:none; border-radius:6px; font-family:'Barlow Condensed',sans-serif; font-weight:900; font-size:13px; letter-spacing:3px; text-transform:uppercase; cursor:pointer;">Close</button>
+        </div>
+      `;
+    }).catch(err => {
+      btn.disabled    = false;
+      btn.textContent = '🏠 Request Quote';
+      msg.style.display = 'block';
+      msg.style.color   = 'var(--hot)';
+      msg.textContent   = '⚠ Failed to send. Please try again.';
+    });
+  }
+
+  // Close home call modal on backdrop click
+  document.getElementById('homeCallModal').addEventListener('click', function(e) {
+    if (e.target === this) closeHomeCallModal();
+  });
 
   // ========== WALK-IN SLOTS DISPLAY ==========
   function renderWalkInSlots() {
