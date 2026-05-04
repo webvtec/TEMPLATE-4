@@ -588,7 +588,7 @@ h1 span.accent { color: var(--neon); }
 }
 
 /* ========================= GALLERY STRIP ========================= */
-#gallerySection { padding-top: 62px; padding-left: 58px; }
+#gallerySection { padding-top: 62px; padding-left: 0; }
 
 .gallery-category {
   margin-top: 28px;
@@ -1825,7 +1825,10 @@ const firebaseConfig = {
           });
         }
         closeAdminModal();
-        window.location.href = 'dashboard.html';
+        // Use LOCAL persistence so session survives the redirect to dashboard
+        return firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
+          window.location.href = 'dashboard.html';
+        });
       })
       .catch((error) => {
         if (error.code === 'auth/popup-closed-by-user') return;
