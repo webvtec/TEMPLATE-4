@@ -1567,9 +1567,6 @@
     // ========== ADMIN UID GUARD ==========
     const ADMIN_UID = "Tms2VoEM3RUgsLmCPS6ROM8xobe2";
 
-    // ========== AUTH GUARD ==========
-    // firebase.auth() resolves its internal state via a Promise —
-    // we wait for that before making any redirect decisions.
     function grantAccess() {
       const overlay = document.getElementById('accessOverlay');
       const status  = document.getElementById('accessStatus');
@@ -1597,19 +1594,15 @@
       setTimeout(() => { window.location.href = 'index.html'; }, 1500);
     }
 
-    // Use the internal Firebase Auth promise that resolves once
-    // the persisted session has been fully restored from storage.
-    firebase.auth().authStateReady
-      ? firebase.auth().authStateReady().then(checkUser)
-      : new Promise(resolve => {
-          const unsub = firebase.auth().onAuthStateChanged(user => {
-            unsub(); resolve(user);
-          });
-        }).then(checkUser);
+    // Firebase compat 9.6.1: onAuthStateChanged fires TWICE on page load —
+    // first with null (before session restored), then with the real user.
+    // We skip the first null and only act on the second call.
+    let authCallCount = 0;
+    firebase.auth().onAuthStateChanged(user => {
+      authCallCount++;
 
-    function checkUser(user) {
-      // If called from authStateReady (no arg), get current user
-      if (user === undefined) user = firebase.auth().currentUser;
+      // Skip the very first null — it's always a false negative during init
+      if (authCallCount === 1 && user === null) return;
 
       if (!user) {
         denyAccess('NO SESSION — REDIRECTING...');
@@ -1621,7 +1614,7 @@
         return;
       }
       grantAccess();
-    }
+    });
   </script>
   <!-- Admin Cancel Booking Modal -->
   <div id="adminCancelModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.55); justify-content:center; align-items:center; z-index:2000;">
