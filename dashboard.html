@@ -1568,7 +1568,22 @@
     const ADMIN_UID = "Tms2VoEM3RUgsLmCPS6ROM8xobe2";
 
     // ========== AUTH GUARD WITH OVERLAY ==========
+    // Give Firebase time to restore the session before acting on null user
+    let authResolved = false;
+    const authTimeout = setTimeout(() => {
+      if (!authResolved) {
+        // Firebase took too long — force redirect
+        const status = document.getElementById('accessStatus');
+        status.textContent = 'SESSION EXPIRED — REDIRECTING...';
+        status.style.color = '#e53935';
+        setTimeout(() => { window.location.href = 'index.html'; }, 1200);
+      }
+    }, 8000);
+
     firebase.auth().onAuthStateChanged(user => {
+      authResolved = true;
+      clearTimeout(authTimeout);
+
       const overlay = document.getElementById('accessOverlay');
       const status  = document.getElementById('accessStatus');
       const content = document.getElementById('dashboardContent');
