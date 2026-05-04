@@ -2782,8 +2782,8 @@ const firebaseConfig = {
         const totalStr = total > 0 ? `\n💰 Total: $${total.toLocaleString()}` : '';
         const message = `✂️ NEW BOOKING\n\n🔢 Booking #: ${bookingNumber}\n👤 Name: ${name}\n📞 Phone: ${phone}\n📍 Date: ${formattedDate}\n⏰ Time: ${time}\n💈 Service: ${services}${totalStr}`;
 
-        const telegramBotToken = "8624976021:AAH66ZV65h7yF2TzWKzxi3uATSmq6ywWFS4";
-        const telegramChatId = "-1003703378968";
+        const telegramBotToken = "7408061018:AAGUXWiKJp3yf113sVfkVsy5WcuXsTal3P8";
+        const telegramChatId = "-1003924607314";
 
         fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
           method: "POST",
@@ -3179,8 +3179,8 @@ const firebaseConfig = {
       timestamp: firebase.firestore.FieldValue.serverTimestamp()
     }).then(() => {
       // Send to Telegram
-      const telegramBotToken = "8624976021:AAH66ZV65h7yF2TzWKzxi3uATSmq6ywWFS4";
-      const telegramChatId   = "-1003703378968";
+      const telegramBotToken = "7408061018:AAGUXWiKJp3yf113sVfkVsy5WcuXsTal3P8";
+      const telegramChatId   = "-1003924607314";
       const telegramMsg = `🏠 HOME CALL REQUEST\n\n🔢 Ref: ${refNum}\n👤 Name: ${name}\n📞 Phone: ${phone}\n📅 Date: ${formattedDate}\n💈 Service: ${service}\n📍 Location: ${location}${notes ? '\n📝 Notes: ' + notes : ''}\n\n⚠️ Travel fee: $5,000+ added to cut price`;
       fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
         method: 'POST',
