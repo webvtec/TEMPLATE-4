@@ -1567,44 +1567,13 @@
     // ========== ADMIN UID GUARD ==========
     const ADMIN_UID = "Tms2VoEM3RUgsLmCPS6ROM8xobe2";
 
-    // ========== AUTH GUARD WITH OVERLAY ==========
-    // Give Firebase time to restore the session before acting on null user
-    let authResolved = false;
-    const authTimeout = setTimeout(() => {
-      if (!authResolved) {
-        // Firebase took too long — force redirect
-        const status = document.getElementById('accessStatus');
-        status.textContent = 'SESSION EXPIRED — REDIRECTING...';
-        status.style.color = '#e53935';
-        setTimeout(() => { window.location.href = 'index.html'; }, 1200);
-      }
-    }, 8000);
-
-    firebase.auth().onAuthStateChanged(user => {
-      authResolved = true;
-      clearTimeout(authTimeout);
-
+    // ========== AUTH GUARD ==========
+    // firebase.auth() resolves its internal state via a Promise —
+    // we wait for that before making any redirect decisions.
+    function grantAccess() {
       const overlay = document.getElementById('accessOverlay');
       const status  = document.getElementById('accessStatus');
       const content = document.getElementById('dashboardContent');
-
-      if (!user) {
-        status.textContent = 'ACCESS DENIED — REDIRECTING...';
-        status.style.color = '#e53935';
-        setTimeout(() => { window.location.href = 'index.html'; }, 1200);
-        return;
-      }
-
-      if (user.uid !== ADMIN_UID) {
-        status.textContent = 'UNAUTHORISED — SIGNING OUT...';
-        status.style.color = '#e53935';
-        firebase.auth().signOut().then(() => {
-          setTimeout(() => { window.location.href = 'index.html'; }, 1200);
-        });
-        return;
-      }
-
-      // Verified admin — reveal dashboard
       status.textContent = 'ACCESS GRANTED';
       status.style.color = '#4CAF50';
       setTimeout(() => {
@@ -1614,13 +1583,45 @@
           overlay.style.display = 'none';
           content.style.display = 'block';
         }, 400);
-      }, 600);
-
+      }, 500);
       loadGallery();
       showSection('reservationsPage');
       loadReservations();
       loadUnavailableDates();
-    });
+    }
+
+    function denyAccess(msg) {
+      const status = document.getElementById('accessStatus');
+      status.textContent = msg || 'ACCESS DENIED — REDIRECTING...';
+      status.style.color = '#e53935';
+      setTimeout(() => { window.location.href = 'index.html'; }, 1500);
+    }
+
+    // Use the internal Firebase Auth promise that resolves once
+    // the persisted session has been fully restored from storage.
+    firebase.auth().authStateReady
+      ? firebase.auth().authStateReady().then(checkUser)
+      : new Promise(resolve => {
+          const unsub = firebase.auth().onAuthStateChanged(user => {
+            unsub(); resolve(user);
+          });
+        }).then(checkUser);
+
+    function checkUser(user) {
+      // If called from authStateReady (no arg), get current user
+      if (user === undefined) user = firebase.auth().currentUser;
+
+      if (!user) {
+        denyAccess('NO SESSION — REDIRECTING...');
+        return;
+      }
+      if (user.uid !== ADMIN_UID) {
+        firebase.auth().signOut();
+        denyAccess('UNAUTHORISED — REDIRECTING...');
+        return;
+      }
+      grantAccess();
+    }
   </script>
   <!-- Admin Cancel Booking Modal -->
   <div id="adminCancelModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.55); justify-content:center; align-items:center; z-index:2000;">

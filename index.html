@@ -1815,7 +1815,10 @@ const firebaseConfig = {
     const provider = new firebase.auth.GoogleAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' });
 
-    firebase.auth().signInWithPopup(provider)
+    // Set LOCAL persistence FIRST so the token is written to localStorage
+    // before the popup completes — this ensures it survives the page redirect.
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+      .then(() => firebase.auth().signInWithPopup(provider))
       .then((result) => {
         const user = result.user;
         if (user.uid !== ADMIN_UID) {
@@ -1825,10 +1828,7 @@ const firebaseConfig = {
           });
         }
         closeAdminModal();
-        // Use LOCAL persistence so session survives the redirect to dashboard
-        return firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
-          window.location.href = 'dashboard.html';
-        });
+        window.location.href = 'dashboard.html';
       })
       .catch((error) => {
         if (error.code === 'auth/popup-closed-by-user') return;
