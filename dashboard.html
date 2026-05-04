@@ -1567,25 +1567,17 @@
     // ========== ADMIN UID GUARD ==========
     const ADMIN_UID = "Tms2VoEM3RUgsLmCPS6ROM8xobe2";
 
-    // ========== AUTH GUARD WITH OVERLAY ==========
     firebase.auth().onAuthStateChanged(user => {
       const overlay = document.getElementById('accessOverlay');
       const status  = document.getElementById('accessStatus');
       const content = document.getElementById('dashboardContent');
 
       if (!user) {
-        status.textContent = 'ACCESS DENIED — REDIRECTING...';
-        status.style.color = '#e53935';
-        setTimeout(() => { window.location.href = 'index.html'; }, 1200);
+        window.location.href = 'index.html';
         return;
       }
-
       if (user.uid !== ADMIN_UID) {
-        status.textContent = 'UNAUTHORISED — SIGNING OUT...';
-        status.style.color = '#e53935';
-        firebase.auth().signOut().then(() => {
-          setTimeout(() => { window.location.href = 'index.html'; }, 1200);
-        });
+        firebase.auth().signOut().then(() => { window.location.href = 'index.html'; });
         return;
       }
 
