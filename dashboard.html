@@ -1567,37 +1567,89 @@
     // ========== ADMIN UID GUARD ==========
     const ADMIN_UID = "Tms2VoEM3RUgsLmCPS6ROM8xobe2";
 
-    firebase.auth().onAuthStateChanged(user => {
+    (function () {
       const overlay = document.getElementById('accessOverlay');
       const status  = document.getElementById('accessStatus');
       const content = document.getElementById('dashboardContent');
 
-      if (!user) {
-        window.location.href = 'index.html';
-        return;
-      }
-      if (user.uid !== ADMIN_UID) {
-        firebase.auth().signOut().then(() => { window.location.href = 'index.html'; });
-        return;
+      let resolved = false;
+
+      // Helper: show a recoverable error on the overlay instead of hanging forever
+      function showOverlayError(msg) {
+        if (resolved) return;
+        resolved = true;
+        status.textContent = msg;
+        status.style.color = '#FF2052';
+        // Add a "Back to sign-in" button so the user is never trapped
+        if (!document.getElementById('overlayRetryBtn')) {
+          const btn = document.createElement('button');
+          btn.id = 'overlayRetryBtn';
+          btn.textContent = 'BACK TO SIGN-IN';
+          btn.style.cssText = "margin-top:18px;padding:10px 22px;background:transparent;color:#00D4FF;border:1px solid #00D4FF;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:3px;font-size:12px;cursor:pointer;text-transform:uppercase;border-radius:2px;";
+          btn.onclick = () => { window.location.href = 'index.html'; };
+          overlay.appendChild(btn);
+        }
       }
 
-      // Verified admin — reveal dashboard
-      status.textContent = 'ACCESS GRANTED';
-      status.style.color = '#4CAF50';
-      setTimeout(() => {
-        overlay.style.transition = 'opacity 0.4s';
-        overlay.style.opacity = '0';
-        setTimeout(() => {
-          overlay.style.display = 'none';
-          content.style.display = 'block';
-        }, 400);
-      }, 600);
+      // Watchdog: if auth state hasn't resolved within 6s, something is wrong
+      // (third-party cookies blocked, network issue, popup blockers, etc.)
+      const watchdog = setTimeout(() => {
+        if (!resolved) {
+          console.error('[Auth] onAuthStateChanged did not fire within 6s.');
+          showOverlayError('Sign-in session not detected. Please sign in again.');
+        }
+      }, 6000);
 
-      loadGallery();
-      showSection('reservationsPage');
-      loadReservations();
-      loadUnavailableDates();
-    });
+      try {
+        // Force LOCAL persistence so session survives the index.html → dashboard.html navigation
+        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+          .catch(err => console.warn('[Auth] setPersistence failed:', err));
+
+        firebase.auth().onAuthStateChanged(user => {
+          console.log('[Auth] State changed. User:', user ? user.uid : 'null');
+          clearTimeout(watchdog);
+
+          if (!user) {
+            resolved = true;
+            window.location.replace('index.html');
+            return;
+          }
+          if (user.uid !== ADMIN_UID) {
+            resolved = true;
+            firebase.auth().signOut()
+              .finally(() => { window.location.replace('index.html'); });
+            return;
+          }
+
+          // Verified admin — reveal dashboard
+          resolved = true;
+          status.textContent = 'ACCESS GRANTED';
+          status.style.color = '#4CAF50';
+          setTimeout(() => {
+            overlay.style.transition = 'opacity 0.4s';
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+              overlay.style.display = 'none';
+              content.style.display = 'block';
+            }, 400);
+          }, 600);
+
+          try { loadGallery(); } catch (e) { console.error('loadGallery:', e); }
+          try { showSection('reservationsPage'); } catch (e) { console.error('showSection:', e); }
+          try { loadReservations(); } catch (e) { console.error('loadReservations:', e); }
+          try { loadUnavailableDates(); } catch (e) { console.error('loadUnavailableDates:', e); }
+        }, err => {
+          // Error callback for onAuthStateChanged
+          clearTimeout(watchdog);
+          console.error('[Auth] onAuthStateChanged error:', err);
+          showOverlayError('Auth error: ' + (err.message || err.code || 'unknown'));
+        });
+      } catch (err) {
+        clearTimeout(watchdog);
+        console.error('[Auth] Setup threw:', err);
+        showOverlayError('Setup error: ' + (err.message || err));
+      }
+    })();
   </script>
   <!-- Admin Cancel Booking Modal -->
   <div id="adminCancelModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.55); justify-content:center; align-items:center; z-index:2000;">
