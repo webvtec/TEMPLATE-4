@@ -1815,10 +1815,7 @@ const firebaseConfig = {
     const provider = new firebase.auth.GoogleAuthProvider();
     provider.setCustomParameters({ prompt: 'select_account' });
 
-    // Set LOCAL persistence FIRST so the token is written to localStorage
-    // before the popup completes — this ensures it survives the page redirect.
-    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-      .then(() => firebase.auth().signInWithPopup(provider))
+    firebase.auth().signInWithPopup(provider)
       .then((result) => {
         const user = result.user;
         if (user.uid !== ADMIN_UID) {

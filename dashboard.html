@@ -1567,10 +1567,29 @@
     // ========== ADMIN UID GUARD ==========
     const ADMIN_UID = "Tms2VoEM3RUgsLmCPS6ROM8xobe2";
 
-    function grantAccess() {
+    // ========== AUTH GUARD WITH OVERLAY ==========
+    firebase.auth().onAuthStateChanged(user => {
       const overlay = document.getElementById('accessOverlay');
       const status  = document.getElementById('accessStatus');
       const content = document.getElementById('dashboardContent');
+
+      if (!user) {
+        status.textContent = 'ACCESS DENIED — REDIRECTING...';
+        status.style.color = '#e53935';
+        setTimeout(() => { window.location.href = 'index.html'; }, 1200);
+        return;
+      }
+
+      if (user.uid !== ADMIN_UID) {
+        status.textContent = 'UNAUTHORISED — SIGNING OUT...';
+        status.style.color = '#e53935';
+        firebase.auth().signOut().then(() => {
+          setTimeout(() => { window.location.href = 'index.html'; }, 1200);
+        });
+        return;
+      }
+
+      // Verified admin — reveal dashboard
       status.textContent = 'ACCESS GRANTED';
       status.style.color = '#4CAF50';
       setTimeout(() => {
@@ -1580,40 +1599,12 @@
           overlay.style.display = 'none';
           content.style.display = 'block';
         }, 400);
-      }, 500);
+      }, 600);
+
       loadGallery();
       showSection('reservationsPage');
       loadReservations();
       loadUnavailableDates();
-    }
-
-    function denyAccess(msg) {
-      const status = document.getElementById('accessStatus');
-      status.textContent = msg || 'ACCESS DENIED — REDIRECTING...';
-      status.style.color = '#e53935';
-      setTimeout(() => { window.location.href = 'index.html'; }, 1500);
-    }
-
-    // Firebase compat 9.6.1: onAuthStateChanged fires TWICE on page load —
-    // first with null (before session restored), then with the real user.
-    // We skip the first null and only act on the second call.
-    let authCallCount = 0;
-    firebase.auth().onAuthStateChanged(user => {
-      authCallCount++;
-
-      // Skip the very first null — it's always a false negative during init
-      if (authCallCount === 1 && user === null) return;
-
-      if (!user) {
-        denyAccess('NO SESSION — REDIRECTING...');
-        return;
-      }
-      if (user.uid !== ADMIN_UID) {
-        firebase.auth().signOut();
-        denyAccess('UNAUTHORISED — REDIRECTING...');
-        return;
-      }
-      grantAccess();
     });
   </script>
   <!-- Admin Cancel Booking Modal -->
